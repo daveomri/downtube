@@ -17,5 +17,5 @@ def config():
     file = open(home+".bashrc", "a")
     file.write("#Downtube alias\nalias downtube='~/.downtubebin/downtube'")
     file.close()
-    os.sys("source ~/.bashrc")
+    os.sys(". ~/.bashrc")
 config()
