@@ -51,9 +51,10 @@ class downtube:
 				self.list = OptionMenu(self.root, self.whatvariable, *self.whattodo).pack(side=LEFT)
 				# End of frame
 				self.root.mainloop()
-			except KeyboardInterrupt:
+			except (KeyboardInterrupt, SystemExit):
+				print("Hope I'll see you soon")
 				exit()
-			except:
+			finally:
 				print("Sorry, something went wrong.")
 				exit()
 		else:
@@ -71,10 +72,10 @@ class downtube:
 						print("I'm sorry, but your choice is incorrect. \n For list of available types type 'list'.")
 						self.var = input("Format: ")
 				self.showmetheway()
-			except KeyboardInterrupt:
+			except (KeyboardInterrupt, SystemExit):
+				print("Hope I'll see you soon")
 				exit()
 			except:
-				print("Sorry, something went wrong.")
 				exit()
 	def showmetheway(self):
 		if self.var == "ogg":
