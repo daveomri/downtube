@@ -52,8 +52,9 @@ class downtube:
 				# End of frame
 				self.root.mainloop()
 			except KeyboardInterrupt:
-				raise
+				exit()
 			except:
+				print("Sorry, something went wrong.")
 				exit()
 		else:
 			try:
@@ -71,8 +72,9 @@ class downtube:
 						self.var = input("Format: ")
 				self.showmetheway()
 			except KeyboardInterrupt:
-				raise
+				exit()
 			except:
+				print("Sorry, something went wrong.")
 				exit()
 	def showmetheway(self):
 		if self.var == "ogg":
