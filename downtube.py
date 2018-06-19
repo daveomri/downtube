@@ -11,59 +11,69 @@ class downtube:
 		self.listvideo = ["mp4","mkv", "3gp"]
 		self.whattodo=["Unoma", "Playlist", "File"]
 		if self.gui == 1:
-			# Building of frame
-			self.root = Tk()
-			self.root.configure(background="#191919")
-			self.root.wm_title("downtube")
-			self.root.minsize(430, 120)
-			self.root.maxsize(430, 120)
-			# Text informing user about downloading
-			self.text = Label(self.root, text="Insert address", font="fixedsys 11", bg="#191919", fg="#ffffff")
-			self.text.pack()
-			# List of video formats
-			def sendIt():
-				self.urldow = self.url.get()
-				self.var = self.variable.get()
-				self.whatto = self.whatvariable.get()
-				# If no url or path is given, just pass
-				if len(self.urldow) == 0:
-					pass
-				else:
-					# Which way to choose
-					self.text.config(text="Working on it..")
-					self.text.update()
-					self.showmetheway()
-			# Entry for url or path to file
-			self.url = Entry(self.root)
-			self.url.pack()
-			self.url.config(width=60)
-			self.url.focus_set()
-			# List of formats
-			self.variable = StringVar(self.root)
-			self.variable.set(self.formats[0])
-			self.list = OptionMenu(self.root, self.variable, *self.formats).pack(side=LEFT, padx=20, pady=20)
-			# Button
-			self.buttondue = Button(self.root, text="Get", command=sendIt, font="system 8 bold", bg="#19aa19", fg="#ffffff").pack(side = LEFT, padx=80, pady=20)
-			# List of choices what to do with user url or path to file
-			self.whatvariable = StringVar(self.root)
-			self.whatvariable.set(self.whattodo[0])
-			self.list = OptionMenu(self.root, self.whatvariable, *self.whattodo).pack(side=LEFT)
-			# End of frame
-			self.root.mainloop()
+			try:
+				# Building of frame
+				self.root = Tk()
+				self.root.configure(background="#191919")
+				self.root.wm_title("downtube")
+				self.root.minsize(430, 120)
+				self.root.maxsize(430, 120)
+				# Text informing user about downloading
+				self.text = Label(self.root, text="Insert address", font="fixedsys 11", bg="#191919", fg="#ffffff")
+				self.text.pack()
+				# List of video formats
+				def sendIt():
+					self.urldow = self.url.get()
+					self.var = self.variable.get()
+					self.whatto = self.whatvariable.get()
+					# If no url or path is given, just pass
+					if len(self.urldow) == 0:
+						pass
+					else:
+						# Which way to choose
+						self.text.config(text="Working on it..")
+						self.text.update()
+						self.showmetheway()
+				# Entry for url or path to file
+				self.url = Entry(self.root)
+				self.url.pack()
+				self.url.config(width=60)
+				self.url.focus_set()
+				# List of formats
+				self.variable = StringVar(self.root)
+				self.variable.set(self.formats[0])
+				self.list = OptionMenu(self.root, self.variable, *self.formats).pack(side=LEFT, padx=20, pady=20)
+				# Button
+				self.buttondue = Button(self.root, text="Get", command=sendIt, font="system 8 bold", bg="#19aa19", fg="#ffffff").pack(side = LEFT, padx=80, pady=20)
+				# List of choices what to do with user url or path to file
+				self.whatvariable = StringVar(self.root)
+				self.whatvariable.set(self.whattodo[0])
+				self.list = OptionMenu(self.root, self.whatvariable, *self.whattodo).pack(side=LEFT)
+				# End of frame
+				self.root.mainloop()
+			except KeyboardInterrupt:
+				raise
+			except:
+				exit()
 		else:
-			self.whatto = input("Unoma/Playlist/File: ")
-			while (self.whatto in self.whattodo) == False:
+			try:
 				self.whatto = input("Unoma/Playlist/File: ")
-			self.urldow = input("URL/ptf: ")
-			self.var = input("Format (type list to see all formats): ")
-			while (self.var in self.formats) == False:
-				if self.var == "list":
-					for format in self.formats:
-						print(format)
-				else:
-					print("I'm sorry, but your choice is incorrect. \n For list of available types type 'list'.")
-				self.var = input("Format: ")
-			self.showmetheway()
+				while (self.whatto in self.whattodo) == False:
+					self.whatto = input("Unoma/Playlist/File: ")
+					self.urldow = input("URL/ptf: ")
+				self.var = input("Format (type list to see all formats): ")
+				while (self.var in self.formats) == False:
+					if self.var == "list":
+						for format in self.formats:
+							print(format)
+					else:
+						print("I'm sorry, but your choice is incorrect. \n For list of available types type 'list'.")
+						self.var = input("Format: ")
+				self.showmetheway()
+			except KeyboardInterrupt:
+				raise
+			except:
+				exit()
 	def showmetheway(self):
 		if self.var == "ogg":
 			self.var = "vorbis"
