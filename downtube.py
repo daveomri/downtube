@@ -61,7 +61,7 @@ class downtube:
 				self.whatto = input("Unoma/Playlist/File: ")
 				while (self.whatto in self.whattodo) == False:
 					self.whatto = input("Unoma/Playlist/File: ")
-					self.urldow = input("URL/ptf: ")
+				self.urldow = input("URL/ptf: ")
 				self.var = input("Format (type list to see all formats): ")
 				while (self.var in self.formats) == False:
 					if self.var == "list":
