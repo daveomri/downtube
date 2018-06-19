@@ -132,8 +132,10 @@ def start_program():
 	if len(sys.argv) > 1:
 		if str(sys.argv[1]) == "--help":
 			os.system("echo '\033[0;32mdowntube\033[0m command for gui\n\033[0;32mdowntube -t\033[0m command for text-mode'")
-		else:
+		elif str(sys.argv[1]) == "-t":
 			master = downtube(0)
+		else:
+			print("Sorry, I can't understand.")
 	else:
 		master = downtube(1)
 start_program()
